@@ -24,6 +24,9 @@
         <item name="background">@android:color/transparent</item>
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="android:textCursorDrawable">@null</item>
+
+        <item name="colorMenuChecked">#F5F6FA</item>
+        <item name="colorMenuNotChecked">#F5F6FA</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.SocialProtection">

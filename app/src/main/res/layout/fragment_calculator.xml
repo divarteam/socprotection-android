@@ -10,367 +10,131 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/inter_semibold"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center"
         android:text="Социальный калькулятор"
         android:textAllCaps="false"
         android:textColor="?colorAccent"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/first_title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="Расскажите о себе"
+        android:textColor="?colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/first_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/first_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_2_user"
+        app:layout_constraintBottom_toTopOf="@id/first"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_title"
+        app:tint="@android:color/holo_blue_dark" />
+
+    <TextView
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="Регистрация не нужна - достаточно заполнить несколько полей!"
+        android:textColor="?colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/second_title"
+        app:layout_constraintTop_toBottomOf="@id/first_icon" />
+
+    <TextView
+        android:id="@+id/second_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="Рассчитайте выплату"
+        android:textColor="?colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/second_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first" />
+
+    <ImageView
+        android:id="@+id/second_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_wallet"
+        app:layout_constraintBottom_toTopOf="@id/second"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second_title"
+        app:tint="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="Регистрация не нужна - достаточно заполнить несколько полей!"
+        android:textColor="?colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/go"
+        app:layout_constraintTop_toBottomOf="@id/second_icon" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="?cardBackground"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
+            android:fontFamily="@font/inter_extrabold"
+            android:text="Посчитать!"
+            android:textColor="?colorAccent"
+            android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Регистрация не нужна - достаточно заполнить несколько полей!"
-                android:textSize="16sp"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="?colorAccent"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15dp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Возраст"
-                app:boxBackgroundColor="?cardBackground"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="?colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_regular"
-                    android:paddingHorizontal="20dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/earnings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Заработок"
-                app:boxBackgroundColor="?cardBackground"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="?colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_regular"
-                    android:paddingHorizontal="20dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/living_space"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Жилплощадь (кв. м.)"
-                app:boxBackgroundColor="?cardBackground"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="?colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_regular"
-                    android:paddingHorizontal="20dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/children_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Количество детей"
-                app:boxBackgroundColor="?cardBackground"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="?colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_regular"
-                    android:paddingHorizontal="20dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/family_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Количество людей в семье"
-                app:boxBackgroundColor="?cardBackground"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="?colorAccent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_regular"
-                    android:paddingHorizontal="20dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?cardBackground"
-                android:clickable="true"
-                android:elevation="0dp"
-                android:focusable="true"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/experimental_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="Военнослужащий"
-                        android:textColor="?colorAccent"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@id/experimental_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/experimental_subtitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="15dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:text="Являетесь ли вы военнослужащим или членом семьи военнослужащего?"
-                        android:textColor="?colorAccent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/experimental_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/experimental_title" />
-
-                    <ImageView
-                        android:id="@+id/experimental_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_close_square"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/holo_red_dark" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?cardBackground"
-                android:clickable="true"
-                android:elevation="0dp"
-                android:focusable="true"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/repression_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="Репрессии"
-                        android:textColor="?colorAccent"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@id/repression_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/repression_subtitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="15dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:text="Являетесь ли вы жертвой политических репресий?"
-                        android:textColor="?colorAccent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/repression_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/repression_title" />
-
-                    <ImageView
-                        android:id="@+id/repression_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_close_square"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/holo_red_dark" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?cardBackground"
-                android:clickable="true"
-                android:elevation="0dp"
-                android:focusable="true"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/veteran_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="Ветеран"
-                        android:textColor="?colorAccent"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@id/veteran_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/veteran_subtitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="15dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:text="Являетесь ли вы ветераном (в том числе и труда)?"
-                        android:textColor="?colorAccent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/veteran_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/veteran_title" />
-
-                    <ImageView
-                        android:id="@+id/veteran_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_close_square"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/holo_red_dark" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?cardBackground"
-                android:clickable="true"
-                android:elevation="0dp"
-                android:focusable="true"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Посчитать!"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/inter_extrabold"
-                    android:layout_gravity="center"
-                    android:textColor="?colorAccent"
-                    android:layout_margin="15dp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

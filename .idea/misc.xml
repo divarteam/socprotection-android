@@ -3,13 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/black_transparent_gradient.xml" value="0.2520833333333333" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/black_transparent_gradient_vertical.xml" value="0.22135416666666666" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/ic_arrow_left.xml" value="0.3138888888888889" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/ic_arrow_right.xml" value="0.3138888888888889" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/ic_close_square.xml" value="0.3138888888888889" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/drawable/splash.xml" value="0.3138888888888889" />
-        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_age_picker.xml" value="0.21" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_calculator.xml" value="0.25" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_calculator_result.xml" value="0.1890625" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_children_count.xml" value="0.20520833333333333" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_disability.xml" value="0.25" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_districts.xml" value="0.25" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_earnings.xml" value="0.23541666666666666" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_engaged.xml" value="0.2359375" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_gender.xml" value="0.33" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_introduction.xml" value="0.36666666666666664" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/fragment_statistics.xml" value="0.22" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/layout_age.xml" value="0.36666666666666664" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/layout_city.xml" value="0.25" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/layout_header.xml" value="0.2" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/layout_loading.xml" value="0.35260416666666666" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/layout/layout_statistic.xml" value="0.33" />
+        <entry key="..\:/SocialProtectionDivar/app/src/main/res/menu/main_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/SocialProtectionDivar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3138888888888889" />
       </map>
     </option>

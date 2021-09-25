@@ -9,5 +9,80 @@
         android:id="@+id/calculatorFragment"
         android:name="ru.divar.socprotection.ui.calculator.CalculatorFragment"
         android:label="CalculatorFragment"
-        tools:layout="@layout/fragment_calculator"/>
+        tools:layout="@layout/fragment_calculator">
+        <action
+            android:id="@+id/action_calculatorFragment_to_agePickerFragment"
+            app:destination="@id/agePickerFragment" />
+        <action
+            android:id="@+id/action_calculatorFragment_to_calculatorResultFragment"
+            app:destination="@id/calculatorResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agePickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.AgePickerFragment"
+        android:label="AgePickerFragment"
+        tools:layout="@layout/fragment_age">
+        <action
+            android:id="@+id/action_agePickerFragment_to_earningsPickerFragment"
+            app:destination="@id/earningsPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/earningsPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.EarningsPickerFragment"
+        android:label="EarningsPickerFragment"
+        tools:layout="@layout/fragment_earnings">
+        <action
+            android:id="@+id/action_earningsPickerFragment_to_disabilityPickerFragment"
+            app:destination="@id/disabilityPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/disabilityPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.DisabilityPickerFragment"
+        android:label="DisabilityPickerFragment"
+        tools:layout="@layout/fragment_disability">
+        <action
+            android:id="@+id/action_disabilityPickerFragment_to_childrenCountPickerFragment"
+            app:destination="@id/childrenCountPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childrenCountPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.ChildrenCountPickerFragment"
+        android:label="ChildrenCountPickerFragment"
+        tools:layout="@layout/fragment_children_count">
+        <action
+            android:id="@+id/action_childrenCountPickerFragment_to_engagedPickerFragment"
+            app:destination="@id/engagedPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/engagedPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.EngagedPickerFragment"
+        android:label="EngagedPickerFragment"
+        tools:layout="@layout/fragment_engaged">
+        <action
+            android:id="@+id/action_engagedPickerFragment_to_districtsPickerFragment"
+            app:destination="@id/districtsPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/districtsPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.DistrictsPickerFragment"
+        android:label="DistrictsPickerFragment"
+        tools:layout="@layout/fragment_districts">
+        <action
+            android:id="@+id/action_districtsPickerFragment_to_genderPickerFragment"
+            app:destination="@id/genderPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genderPickerFragment"
+        android:name="ru.divar.socprotection.ui.calculator.GenderPickerFragment"
+        android:label="GenderPickerFragment"
+        tools:layout="@layout/fragment_gender">
+        <action
+            android:id="@+id/action_genderPickerFragment_to_calculatorResultFragment"
+            app:destination="@id/calculatorResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatorResultFragment"
+        android:name="ru.divar.socprotection.ui.calculator.CalculatorResultFragment"
+        android:label="CalculatorResultFragment"
+        tools:layout="@layout/fragment_calculator_result" />
 </navigation>

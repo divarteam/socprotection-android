@@ -24,6 +24,9 @@
         <item name="background">@android:color/transparent</item>
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="android:textCursorDrawable">@null</item>
+
+        <item name="colorMenuChecked">@color/grey_700</item>
+        <item name="colorMenuNotChecked">@color/grey_500</item>
     </style>
 
 
