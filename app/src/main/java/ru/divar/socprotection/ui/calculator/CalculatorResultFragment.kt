@@ -58,16 +58,16 @@ class CalculatorResultFragment : Fragment(R.layout.fragment_calculator_result) {
 
                             if (obj.getBoolean("with_soc_protect")) {
 
-                                first_title?.text = "Вам положена соцпомощь!"
+                                first_title?.text = "Вы можете получить пособие!"
                                 first?.text =
-                                    "Исходя из введённых вами данных, вы подходите по критериям для получения социальной помощи."
+                                    "Исходя из введённых Вами данных, вы подходите по критериям для получения социальной помощи. Для этого зайдите на ГосУслуги или позвоните социальному работнику."
                                 first_icon?.setImageResource(R.drawable.ic_tick_square)
 
                             } else {
 
-                                first_title?.text = "Вам не положена соцпомощь."
+                                first_title?.text = "Кажется, Вам ничего не полагается..."
                                 first?.text =
-                                    "Исходя из введённых вами данных, вы не подходите по критериям для получения социальной помощи."
+                                    "Проверьте свои данные ещё раз. Если Вы нигде не ошиблись, то увы - Вас нет ни в одной из категорий."
                                 first_icon?.setImageResource(R.drawable.ic_close_square)
 
                             }
@@ -75,9 +75,10 @@ class CalculatorResultFragment : Fragment(R.layout.fragment_calculator_result) {
                             (activity as MainActivity).stopLoadingAnimation()
                         }
                         else -> {
-                            (activity as MainActivity).onError("Произошла ошибка при загрузке результатов.")
-                            println()
-                            findNavController().popBackStack()
+                            MainScope().launch {
+                                (activity as MainActivity).onError("Произошла ошибка при загрузке результатов.")
+                                findNavController().popBackStack()
+                            }
                         }
                     }
                 }
@@ -89,5 +90,10 @@ class CalculatorResultFragment : Fragment(R.layout.fragment_calculator_result) {
                 e.printStackTrace()
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        findNavController().popBackStack(R.id.calculatorFragment, false)
     }
 }

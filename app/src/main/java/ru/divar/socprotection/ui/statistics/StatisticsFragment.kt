@@ -69,7 +69,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
                             statistic_recycler?.withModels {
                                 header {
                                     id(999999)
-                                    hint("Вашему вниманию представляется статистика по необходимости выплат социальной помощи жителям Удмуртской области, разделённая по регионам.")
+                                    hint("Вашему вниманию представляется статистика по необходимости выплат социальной помощи жителям Удмуртской республики, разделённая по регионам.")
                                 }
                                 for (i in 0 until jsonArray.length()) {
                                     obj = jsonArray.getJSONObject(i)
