@@ -8,8 +8,10 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.google.android.material.card.MaterialCardView
 import ru.divar.socprotection.R
 
-@EpoxyModelClass(layout = R.layout.layout_age)
+@EpoxyModelClass
 abstract class PickerModel : EpoxyModelWithHolder<PickerModel.Holder>() {
+
+    override fun getDefaultLayout(): Int = R.layout.layout_age
 
     @EpoxyAttribute
     var number: Int = 0

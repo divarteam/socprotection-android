@@ -1,13 +1,12 @@
 package ru.divar.socprotection.util
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import okhttp3.FormBody
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
 import org.json.JSONArray
 import org.json.JSONObject
 import ru.divar.socprotection.data.SocialResponse
@@ -16,44 +15,35 @@ import java.util.concurrent.TimeUnit
 class APIUtils {
     companion object {
 
-        internal fun post(
+        internal suspend fun post(
             url: String,
             jsonObject: JSONObject,
             contentType: String
-        ): SocialResponse =
-            runBlocking {
-                val response = GlobalScope.async {
-                    val request = async { preparePostRequest(url, jsonObject, contentType) }
-                    val response = async { request.await()?.let { sendRequest(it) } }
+        ): SocialResponse {
+            val request = preparePostRequest(url, jsonObject, contentType)
+            val response = sendRequest(request)
 
-                    return@async response.await()!!
-                }.await()
+            val code = response.code
+            val body = response.body.string()
 
-                val code = response.code
-                val body = response.body?.string()
+            response.close()
 
-                response.close()
-
-                return@runBlocking SocialResponse(code, body!!)
-            }
+            return SocialResponse(code, body)
+        }
 
         internal fun get(
             url: String
         ): SocialResponse =
             runBlocking {
-                val response = GlobalScope.async {
-                    val request = async { prepareGetRequest(url) }
-                    val response = async { sendRequest(request.await()) }
-
-                    return@async response.await()
-                }.await()
+                val request = prepareGetRequest(url)
+                val response = sendRequest(request)
 
                 val code = response.code
-                val body = response.body?.string()
+                val body = response.body.string()
 
                 response.close()
 
-                return@runBlocking SocialResponse(code, body!!)
+                return@runBlocking SocialResponse(code, body)
             }
 
         private fun jsonToRequestBody(jsonObject: JSONObject) =
@@ -102,31 +92,34 @@ class APIUtils {
                 .get()
                 .build()
 
-        private fun sendRequest(request: Request) = OkHttpClient
-            .Builder()
-            .connectTimeout(2, TimeUnit.MINUTES)
-            .writeTimeout(2, TimeUnit.MINUTES)
-            .readTimeout(2, TimeUnit.MINUTES)
-            .callTimeout(2, TimeUnit.MINUTES)
-            .retryOnConnectionFailure(true)
-            .build()
-            .newCall(request)
-            .execute()
+        private fun sendRequest(request: Request?): Response {
+            if (request == null) error("empty request")
+
+            return OkHttpClient
+                .Builder()
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES)
+                .callTimeout(2, TimeUnit.MINUTES)
+                .retryOnConnectionFailure(true)
+                .build()
+                .newCall(request)
+                .execute()
+        }
 
         const val JSON = "application/json"
         const val URL_ENCODED = "application/x-www-form-urlencoded"
 
         fun JSONObject.toMap(): Map<String, *> = keys().asSequence().associateWith {
-            when (val value = this[it])
-            {
-                is JSONArray ->
-                {
+            when (val value = this[it]) {
+                is JSONArray -> {
                     val map = (0 until value.length()).associate { Pair(it.toString(), value[it]) }
                     JSONObject(map).toMap().values.toList()
                 }
+
                 is JSONObject -> value.toMap()
                 JSONObject.NULL -> null
-                else            -> value
+                else -> value
             }
         }
     }

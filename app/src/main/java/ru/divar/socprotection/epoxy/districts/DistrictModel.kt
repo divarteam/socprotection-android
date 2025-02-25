@@ -1,6 +1,5 @@
 package ru.divar.socprotection.epoxy.districts
 
-import android.view.View
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyAttribute
@@ -9,14 +8,15 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.google.android.material.card.MaterialCardView
 import ru.divar.socprotection.R
 import ru.divar.socprotection.epoxy.KotlinHolder
-import ru.divar.socprotection.ui.calculator.DisabilityPickerFragmentDirections
 import ru.divar.socprotection.ui.calculator.DistrictsPickerFragment
 import ru.divar.socprotection.ui.calculator.DistrictsPickerFragmentDirections
 
-@EpoxyModelClass(layout = R.layout.layout_city)
+@EpoxyModelClass
 abstract class DistrictModel(
     private val fragment: DistrictsPickerFragment
 ) : EpoxyModelWithHolder<DistrictModel.Holder>() {
+
+    override fun getDefaultLayout(): Int = R.layout.layout_city
 
     @EpoxyAttribute
     var districtID: Int = 0

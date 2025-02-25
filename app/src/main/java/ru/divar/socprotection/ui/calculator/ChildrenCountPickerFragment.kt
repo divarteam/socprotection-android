@@ -1,20 +1,33 @@
 package ru.divar.socprotection.ui.calculator
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.android.synthetic.main.fragment_children_count.*
 import ru.divar.socprotection.App
 import ru.divar.socprotection.R
 import ru.divar.socprotection.data.PreferenceRepository
+import ru.divar.socprotection.databinding.FragmentChildrenCountBinding
 import ru.divar.socprotection.epoxy.age.ChildrenController
 
 class ChildrenCountPickerFragment : Fragment(R.layout.fragment_children_count) {
     private lateinit var preferenceRepository: PreferenceRepository
     private lateinit var childrenController: ChildrenController
+
+    private lateinit var binding: FragmentChildrenCountBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentChildrenCountBinding.inflate(inflater, container, false).let {
+        binding = it
+        it.root
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +46,7 @@ class ChildrenCountPickerFragment : Fragment(R.layout.fragment_children_count) {
         if (!this::childrenController.isInitialized)
             childrenController = ChildrenController(preferenceRepository)
 
-        children_recycler?.layoutManager =
+        binding.childrenRecycler.layoutManager =
             LinearLayoutManager(
                 context
             )
@@ -44,15 +57,15 @@ class ChildrenCountPickerFragment : Fragment(R.layout.fragment_children_count) {
 
         childrenController.items = counts
 
-        children_recycler?.apply {
+        binding.childrenRecycler.apply {
             adapter = childrenController.adapter
             setHasFixedSize(false)
             scrollToPosition(2)
         }
 
-        go.setOnClickListener { goNext() }
-        arrow_next.setOnClickListener { goNext() }
-        arrow_back.setOnClickListener { findNavController().popBackStack() }
+        binding.go.setOnClickListener { goNext() }
+        binding.arrowNext.setOnClickListener { goNext() }
+        binding.arrowBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     private fun goNext() {

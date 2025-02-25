@@ -1,31 +1,48 @@
 package ru.divar.socprotection.ui.calculator
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.android.synthetic.main.fragment_districts.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import ru.divar.socprotection.App
 import ru.divar.socprotection.R
 import ru.divar.socprotection.data.District
 import ru.divar.socprotection.data.PreferenceRepository
-import ru.divar.socprotection.epoxy.age.AgeController
+import ru.divar.socprotection.databinding.FragmentDistrictsBinding
 import ru.divar.socprotection.epoxy.districts.DistrictsController
 import ru.divar.socprotection.ui.MainActivity
 import ru.divar.socprotection.util.APIUtils.Companion.toMap
 import ru.divar.socprotection.util.GetDistricts
-import java.lang.Exception
 
 class DistrictsPickerFragment : Fragment(R.layout.fragment_districts) {
 
     lateinit var preferenceRepository: PreferenceRepository
     private lateinit var districtsController: DistrictsController
+
+    private lateinit var binding: FragmentDistrictsBinding
+
+    private val coroutineScope = CoroutineScope(Job() + CoroutineExceptionHandler { coroutineContext, throwable ->
+        throwable.printStackTrace()
+    })
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentDistrictsBinding.inflate(inflater, container, false).let {
+        binding = it
+        it.root
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +58,12 @@ class DistrictsPickerFragment : Fragment(R.layout.fragment_districts) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arrow_back?.setOnClickListener { findNavController().popBackStack() }
+        binding.arrowBack.setOnClickListener { findNavController().popBackStack() }
 
         if (!this::districtsController.isInitialized)
             districtsController = DistrictsController(this)
 
-        districts_recycler?.apply {
+        binding.districtsRecycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = districtsController.adapter
             setHasFixedSize(false)
@@ -56,7 +73,7 @@ class DistrictsPickerFragment : Fragment(R.layout.fragment_districts) {
         (activity as MainActivity).startLoadingAnimation()
 
         try {
-            GlobalScope.launch {
+            coroutineScope.launch(Dispatchers.IO) {
                 val response = GetDistricts().get()
 
                 when (response.code) {
@@ -71,7 +88,7 @@ class DistrictsPickerFragment : Fragment(R.layout.fragment_districts) {
                         }
 
                         districtsController.items = list
-                        MainScope().launch {
+                        launch(Dispatchers.Main) {
                             (activity as MainActivity).stopLoadingAnimation()
                         }
                     }

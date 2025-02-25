@@ -1,7 +1,6 @@
 package ru.divar.socprotection.epoxy.statistic
 
 import android.annotation.SuppressLint
-import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.EpoxyAttribute
@@ -11,8 +10,10 @@ import com.google.android.material.card.MaterialCardView
 import ru.divar.socprotection.R
 import ru.divar.socprotection.epoxy.KotlinHolder
 
-@EpoxyModelClass(layout = R.layout.layout_statistic)
+@EpoxyModelClass
 abstract class StatisticModel : EpoxyModelWithHolder<StatisticModel.Holder>() {
+
+    override fun getDefaultLayout(): Int = R.layout.layout_statistic
 
     @EpoxyAttribute
     var regionID: Int = 0

@@ -1,21 +1,34 @@
 package ru.divar.socprotection.ui.calculator
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.android.synthetic.main.fragment_age.*
 import ru.divar.socprotection.App
 import ru.divar.socprotection.R
 import ru.divar.socprotection.data.PreferenceRepository
+import ru.divar.socprotection.databinding.FragmentAgeBinding
 import ru.divar.socprotection.epoxy.age.AgeController
 
 class AgePickerFragment : Fragment(R.layout.fragment_age) {
 
     private lateinit var preferenceRepository: PreferenceRepository
     private lateinit var ageController: AgeController
+
+    private lateinit var binding: FragmentAgeBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentAgeBinding.inflate(inflater, container, false).let {
+        binding = it
+        it.root
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,20 +55,20 @@ class AgePickerFragment : Fragment(R.layout.fragment_age) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        age_recycler?.layoutManager =
+        binding.ageRecycler.layoutManager =
             LinearLayoutManager(
                 context
             )
 
-        age_recycler?.apply {
+        binding.ageRecycler.apply {
             adapter = ageController.adapter
             setHasFixedSize(false)
             scrollToPosition(2)
         }
 
-        go.setOnClickListener { goNext() }
-        arrow_next.setOnClickListener { goNext() }
-        arrow_back.setOnClickListener { findNavController().popBackStack() }
+        binding.go.setOnClickListener { goNext() }
+        binding.arrowNext.setOnClickListener { goNext() }
+        binding.arrowBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     private fun goNext() {
