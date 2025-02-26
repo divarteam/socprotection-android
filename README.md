@@ -11,7 +11,7 @@
 - ✨ Magic ✨
 
 **Основной стек технологий:**
-- Android Binding
+- Android ViewBinding
 - Epoxy AirBnB
 - OkHttp3
 
